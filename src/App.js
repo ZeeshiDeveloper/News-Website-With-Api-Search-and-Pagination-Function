@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext } from 'react'
+import { AppContext } from './components/context'
+import Pagination from './components/Pagination'
+import Search from './components/Search'
+import Stories from './components/Stories'
 
-function App() {
+const App = () => {
+
+  const context = useContext(AppContext);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2>APP</h2>
+      News Website With Api,Search and Pagination Function
+      <br />
+      {context}
+      <Search />
+      <Pagination />
+      <Stories />
     </div>
   );
 }
 
-export default App;
+export default App
