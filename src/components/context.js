@@ -59,14 +59,22 @@ const AppProvider = ({children}) => {
     const searchPost = (searchVal) =>{
         dispatch({type:"SEARCH_POST", payload:searchVal})
     }
+
+    // Pagination
+    const getPrevPage = () => {
+        dispatch({type:"PREV_PAGE"})
+    }
+    const getNextPage = () => {
+        dispatch({type:"NEXT_PAGE"})
+    }
     
     useEffect(() => {
         fetchApiData(`${API}query=${state.query}&page=${state.page}`);
-    },[state.query]);    
+    },[state.query,state.page]);    
 
 
      return(
-        <AppContext.Provider value={{...state, removeItem, searchPost}}>
+        <AppContext.Provider value={{...state, removeItem, searchPost, getPrevPage, getNextPage}}>
             {children}   {/*means all data of our app are comes inside provider*/}
         </AppContext.Provider>
      );

@@ -19,7 +19,7 @@ const Stories = () => {
 
   return (
     <div>
-      <h2>My Tech News Stories</h2>
+      {/* <h2>My Tech News Stories</h2> */}
       {hits.map(current => {
         const {title, author, objectID, url, num_comments} = current;
         return (

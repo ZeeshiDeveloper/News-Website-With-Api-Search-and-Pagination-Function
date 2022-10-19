@@ -96,17 +96,24 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 1rem 0;
 }
 
 button {
-  padding: 0.8rem 2.2rem;
-  border: none;
-  font-size: 1.6rem;
-  background-color: #15133c;
-  color: #ffffff;
-  margin: 3rem;
+  margin: 0 10px;
+  border-radius: 26px;
+  font-size: 29px;
+  width: 43px;
   cursor: pointer;
   display: inline-block;
+  border: transparent;
+  color: #a5a5a5;
+  background-color: #fff;
+  box-shadow: 0 0 11px #80808059;
+}
+button:hover{
+  color: rgb(58, 56, 56);
+    cursor: pointer;
 }
 
 /* responsive layout  */
@@ -132,3 +139,5 @@ button {
     padding: 2rem;
   }
 }
+
+
