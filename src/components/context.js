@@ -10,7 +10,7 @@ import reducer from "./reducer";
 
 // this API comes from real time API
 // hn.algolia.com/api
-let API = "http://hn.algolia.com/api/v1/search?";
+let API = "https://hn.algolia.com/api/v1/search?";
 
 // initialState
  const initialState = {
