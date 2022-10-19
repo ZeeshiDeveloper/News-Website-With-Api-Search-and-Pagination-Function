@@ -8,7 +8,8 @@ import { createContext, useReducer, useEffect } from "react";
 // Reducer import from reducer.js
 import reducer from "./reducer";
 
-
+// this API comes from real time API
+// hn.algolia.com/api
 let API = "http://hn.algolia.com/api/v1/search?";
 
 // initialState
@@ -31,22 +32,41 @@ const AppProvider = ({children}) => {
 
     
     const fetchApiData = async (url) => {
+        dispatch({type: "SET_LOADING"})
+
         try {
             const res = await fetch(url);
             const data = await res.json();
-            console.log(data)            
+            console.log(data);
+            dispatch({
+                type:"GET_STORIES",
+                payload:{
+                    hits:data.hits,    //now are data array updated in hits
+                    nbPages:data.nbPages
+                }
+            })            //now go to reducer
         } catch (error) {
             console.log(error)
         }
     }
+
+    // to remove the post
+    const removeItem = (id) => {
+        dispatch({type : "REMOVE_POST",payload: id})
+    }
+
+    // search
+    const searchPost = (searchVal) =>{
+        dispatch({type:"SEARCH_POST", payload:searchVal})
+    }
     
     useEffect(() => {
         fetchApiData(`${API}query=${state.query}&page=${state.page}`);
-    },[]);    
+    },[state.query]);    
 
 
      return(
-        <AppContext.Provider value="Provider Delivers A message Sucessfully">
+        <AppContext.Provider value={{...state, removeItem, searchPost}}>
             {children}   {/*means all data of our app are comes inside provider*/}
         </AppContext.Provider>
      );
